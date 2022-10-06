@@ -5,7 +5,9 @@ namespace ChatApp.Controllers
 {
     public class ChatController : Controller
     {
-        private List<KeyValuePair<string, string>> Messages = new List<KeyValuePair<string, string>>();
+        private List<KeyValuePair<string, string>> Messages = new List<KeyValuePair<string, string>>() {
+        new KeyValuePair<string, string>("sd","sd")
+        };
 
         public IActionResult Show()
         {
@@ -37,6 +39,7 @@ namespace ChatApp.Controllers
                 (newMessage.Sender, newMessage.MessageText));
 
             return RedirectToAction("Show");
+            //return Ok();
         }
     }
 }
