@@ -5,8 +5,9 @@ namespace ChatApp.Controllers
 {
     public class TextController : Controller
     {
-        public IActionResult ShowText(TextViewModel model) => View(model);
+        public IActionResult Index(TextViewModel model) => View(model);
 
+        [HttpPost]
         public IActionResult Split(TextViewModel model)
         {
             var splitTextArray = model.Text
@@ -15,7 +16,7 @@ namespace ChatApp.Controllers
 
             model.SplitText = String.Join(Environment.NewLine, splitTextArray);
 
-            return RedirectToAction("ShowText", model);
+            return RedirectToAction("Index", model);
         }
     }
 }

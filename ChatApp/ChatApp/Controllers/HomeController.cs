@@ -13,17 +13,26 @@ namespace ChatApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public IActionResult Privacy()
         {
             return View();
         }
+        
+        public IActionResult Index(TextViewModel model) => View(model);
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [HttpPost]
+        public IActionResult Split(TextViewModel model)
+        {
+            var splitTextArray = model.Text
+                .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .ToArray();
+
+            model.SplitText = String.Join(Environment.NewLine, splitTextArray);
+
+            return RedirectToAction("Index", model);
+        }
+
+            [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
