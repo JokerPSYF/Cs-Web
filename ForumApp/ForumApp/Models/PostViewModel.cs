@@ -6,8 +6,8 @@ namespace ForumApp.ViewModels
 {
     public class PostViewModel
     {
-        [Comment("Post id")]
         [Key]
+        [Comment("Post id")]
         [UIHint("hidden")]
         public int Id { get; set; }
 

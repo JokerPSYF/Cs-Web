@@ -21,7 +21,7 @@ namespace ForumApp.Controllers
         }
 
         // GET: Posts
-        public async Task<IActionResult> Индеь()
+        public async Task<IActionResult> Index()
         {
             var post = this.data
                 .Posts
