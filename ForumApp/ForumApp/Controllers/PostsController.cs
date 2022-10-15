@@ -23,8 +23,9 @@ namespace ForumApp.Controllers
         // GET: Posts
         public async Task<IActionResult> Index()
         {
-            var post = this.data
+            var model = await data
                 .Posts
+                .Where(p => p.IsActive == true)
                 .Select(p => new PostViewModel()
                 {
                     Id = p.Id,
@@ -33,7 +34,7 @@ namespace ForumApp.Controllers
                 })
                 .ToListAsync();
 
-            return View(post);
+            return View(model);
         }
 
         // GET: Posts/Details/5
@@ -65,7 +66,7 @@ namespace ForumApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Content,IsActive")] Post post)
+        public async Task<IActionResult> Create([Bind("Id,Title,Content")] Post post)
         {
             if (ModelState.IsValid)
             {
@@ -128,6 +129,7 @@ namespace ForumApp.Controllers
         }
 
         // GET: Posts/Delete/5
+        [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || data.Posts == null)
@@ -145,19 +147,18 @@ namespace ForumApp.Controllers
             return View(post);
         }
 
-        // POST: Posts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (data.Posts == null)
             {
-                return Problem("Entity set 'ForumAppDbContext.Posts'  is null.");
+                return Problem("Entity set 'ForumAppDbContext.Posts' is null.");
             }
             var post = await data.Posts.FindAsync(id);
             if (post != null)
             {
-                data.Posts.Remove(post);
+                post.IsActive = false;
             }
             
             await data.SaveChangesAsync();
