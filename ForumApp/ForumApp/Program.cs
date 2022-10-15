@@ -1,3 +1,6 @@
+using ForumApp.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace ForumApp
 {
     public class Program
@@ -6,8 +9,13 @@ namespace ForumApp
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddDbContext<ForumAppDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+
             // Add services to the container.
-            builder.Services.AddRazorPages();
+            builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
 
@@ -25,8 +33,9 @@ namespace ForumApp
             app.UseRouting();
 
             app.UseAuthorization();
-
-            app.MapRazorPages();
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }
