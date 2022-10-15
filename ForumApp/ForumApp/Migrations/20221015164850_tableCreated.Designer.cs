@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForumApp.Migrations
 {
     [DbContext(typeof(ForumAppDbContext))]
-    [Migration("20221015110334_newPosts")]
-    partial class newPosts
+    [Migration("20221015164850_tableCreated")]
+    partial class tableCreated
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,6 +51,29 @@ namespace ForumApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Posts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Content = "My first content",
+                            IsActive = true,
+                            Title = "My first post"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Content = "My second content",
+                            IsActive = true,
+                            Title = "My second post"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Content = "My third content",
+                            IsActive = true,
+                            Title = "My third post"
+                        });
                 });
 #pragma warning restore 612, 618
         }
