@@ -56,6 +56,30 @@ namespace TaskBoardApp.Controllers
             return RedirectToAction("All", "Boards");
         }
 
+        public IActionResult Details(int id)
+        {
+            var task = this.data
+                .Tasks
+                .Where(t => t.Id == id)
+                .Select(t => new TaskDetailsViewModel()
+                {
+                    Id = t.Id,
+                    Title = t.Title,
+                    Description = t.Description,
+                    CreatedOn = t.CreatedOn.ToString("dd/MM/yyyy HH:mm"),
+                    Board = t.Board.Name,
+                    Owner = t.Owner.UserName
+                })
+                .FirstOrDefault();
+
+            if (task == null)
+            {
+                return BadRequest();
+            }
+
+            return View(task);
+        }
+
         private string GetUserId()
         => User.FindFirstValue(ClaimTypes.NameIdentifier);
 
