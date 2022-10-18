@@ -42,7 +42,7 @@
             /// <summary>
             /// Error message for the task title
             /// </summary>
-            public const string ErrorMessageTaskTitle = "The length of the title has to be between {1} and {0}";
+            public const string ErrorMessageTaskTitle = "The length of the title has to be between {2} and {1}";
 
             /// <summary>
             /// Maximum length of the task description
@@ -57,7 +57,7 @@
             /// <summary>
             /// Error message for the task title
             /// </summary>
-            public const string ErrorMessageTaskDescription = "The length of the description has to be between {1} and {0}";
+            public const string ErrorMessageTaskDescription = "The length of the description has to be between {2} and {1}";
         }
 
         public static class Board
