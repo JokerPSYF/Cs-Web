@@ -202,7 +202,7 @@ namespace TaskBoardApp.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "54bdc2ae-74b3-4690-86f8-575ef677d3e6", 0, "b9a974ed-9ff2-47ad-a54e-2232c4328a34", "User", "guest@mail.com", false, "Guest", "User", false, null, "GUEST@MAIL.COM", "GUEST", "AQAAAAEAACcQAAAAEEa5MhcmhT3OxBoPldfW4hqrALNoLPrQWTRzQ8lh6fzPkiqVcwccOURwFSqK76DOVQ==", null, false, "fcd26f94-125a-414e-9aa7-b2abe081ee18", false, "guest" });
+                values: new object[] { "02504dd6-0f4e-4575-b116-b2e08976d61c", 0, "676d16eb-da15-43d2-8a1c-74737fabd604", "User", "guest@mail.com", false, "Guest", "User", false, null, "GUEST@MAIL.COM", "GUEST", "AQAAAAEAACcQAAAAEDUP7JecKwflCbYGYyfs2jHiaX6jvWhKW9MuHgFKBD5+EKO7/YNnySpCDzRDyPytNA==", null, false, "4af06b67-f5f7-4b0e-81ff-0afc2dc95cef", false, "guest" });
 
             migrationBuilder.InsertData(
                 table: "Boards",
@@ -219,10 +219,10 @@ namespace TaskBoardApp.Migrations
                 columns: new[] { "Id", "BoardId", "CreatedOn", "Description", "OwnerId", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2022, 9, 18, 10, 48, 58, 953, DateTimeKind.Local).AddTicks(224), "Learn using ASP.NET Core Idenity", "54bdc2ae-74b3-4690-86f8-575ef677d3e6", "Preapare for ASP.NET Fundamentals exam" },
-                    { 2, 1, new DateTime(2022, 5, 18, 10, 48, 58, 953, DateTimeKind.Local).AddTicks(268), "Learn using EF Core and MS SQL Server Management Studio", "54bdc2ae-74b3-4690-86f8-575ef677d3e6", "Improve EF Core skills" },
-                    { 3, 1, new DateTime(2021, 12, 18, 10, 48, 58, 953, DateTimeKind.Local).AddTicks(275), "Learn using ASP.NET Core Identity", "54bdc2ae-74b3-4690-86f8-575ef677d3e6", "Improve ASP.NET Core skills" },
-                    { 4, 1, new DateTime(2022, 9, 18, 10, 48, 58, 953, DateTimeKind.Local).AddTicks(279), "Prapere by solving old Mid and Final exams", "54bdc2ae-74b3-4690-86f8-575ef677d3e6", "Prepare for C# Fundamtals Exam" }
+                    { 1, 1, new DateTime(2022, 9, 18, 21, 23, 12, 135, DateTimeKind.Local).AddTicks(623), "Learn using ASP.NET Core Idenity", "02504dd6-0f4e-4575-b116-b2e08976d61c", "Preapare for ASP.NET Fundamentals exam" },
+                    { 2, 1, new DateTime(2022, 5, 18, 21, 23, 12, 135, DateTimeKind.Local).AddTicks(666), "Learn using EF Core and MS SQL Server Management Studio", "02504dd6-0f4e-4575-b116-b2e08976d61c", "Improve EF Core skills" },
+                    { 3, 1, new DateTime(2021, 12, 18, 21, 23, 12, 135, DateTimeKind.Local).AddTicks(670), "Learn using ASP.NET Core Identity", "02504dd6-0f4e-4575-b116-b2e08976d61c", "Improve ASP.NET Core skills" },
+                    { 4, 1, new DateTime(2022, 9, 18, 21, 23, 12, 135, DateTimeKind.Local).AddTicks(672), "Prapere by solving old Mid and Final exams", "02504dd6-0f4e-4575-b116-b2e08976d61c", "Prepare for C# Fundamtals Exam" }
                 });
 
             migrationBuilder.CreateIndex(

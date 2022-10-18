@@ -17,7 +17,7 @@ namespace TaskBoardApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.8")
+                .HasAnnotation("ProductVersion", "6.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -314,36 +314,36 @@ namespace TaskBoardApp.Migrations
                         {
                             Id = 1,
                             BoardId = 1,
-                            CreatedOn = new DateTime(2022, 9, 18, 10, 48, 58, 953, DateTimeKind.Local).AddTicks(224),
+                            CreatedOn = new DateTime(2022, 9, 18, 21, 23, 12, 135, DateTimeKind.Local).AddTicks(623),
                             Description = "Learn using ASP.NET Core Idenity",
-                            OwnerId = "54bdc2ae-74b3-4690-86f8-575ef677d3e6",
+                            OwnerId = "02504dd6-0f4e-4575-b116-b2e08976d61c",
                             Title = "Preapare for ASP.NET Fundamentals exam"
                         },
                         new
                         {
                             Id = 2,
                             BoardId = 1,
-                            CreatedOn = new DateTime(2022, 5, 18, 10, 48, 58, 953, DateTimeKind.Local).AddTicks(268),
+                            CreatedOn = new DateTime(2022, 5, 18, 21, 23, 12, 135, DateTimeKind.Local).AddTicks(666),
                             Description = "Learn using EF Core and MS SQL Server Management Studio",
-                            OwnerId = "54bdc2ae-74b3-4690-86f8-575ef677d3e6",
+                            OwnerId = "02504dd6-0f4e-4575-b116-b2e08976d61c",
                             Title = "Improve EF Core skills"
                         },
                         new
                         {
                             Id = 3,
                             BoardId = 1,
-                            CreatedOn = new DateTime(2021, 12, 18, 10, 48, 58, 953, DateTimeKind.Local).AddTicks(275),
+                            CreatedOn = new DateTime(2021, 12, 18, 21, 23, 12, 135, DateTimeKind.Local).AddTicks(670),
                             Description = "Learn using ASP.NET Core Identity",
-                            OwnerId = "54bdc2ae-74b3-4690-86f8-575ef677d3e6",
+                            OwnerId = "02504dd6-0f4e-4575-b116-b2e08976d61c",
                             Title = "Improve ASP.NET Core skills"
                         },
                         new
                         {
                             Id = 4,
                             BoardId = 1,
-                            CreatedOn = new DateTime(2022, 9, 18, 10, 48, 58, 953, DateTimeKind.Local).AddTicks(279),
+                            CreatedOn = new DateTime(2022, 9, 18, 21, 23, 12, 135, DateTimeKind.Local).AddTicks(672),
                             Description = "Prapere by solving old Mid and Final exams",
-                            OwnerId = "54bdc2ae-74b3-4690-86f8-575ef677d3e6",
+                            OwnerId = "02504dd6-0f4e-4575-b116-b2e08976d61c",
                             Title = "Prepare for C# Fundamtals Exam"
                         });
                 });
@@ -369,17 +369,17 @@ namespace TaskBoardApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "54bdc2ae-74b3-4690-86f8-575ef677d3e6",
+                            Id = "02504dd6-0f4e-4575-b116-b2e08976d61c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b9a974ed-9ff2-47ad-a54e-2232c4328a34",
+                            ConcurrencyStamp = "676d16eb-da15-43d2-8a1c-74737fabd604",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "GUEST@MAIL.COM",
                             NormalizedUserName = "GUEST",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEa5MhcmhT3OxBoPldfW4hqrALNoLPrQWTRzQ8lh6fzPkiqVcwccOURwFSqK76DOVQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDUP7JecKwflCbYGYyfs2jHiaX6jvWhKW9MuHgFKBD5+EKO7/YNnySpCDzRDyPytNA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fcd26f94-125a-414e-9aa7-b2abe081ee18",
+                            SecurityStamp = "4af06b67-f5f7-4b0e-81ff-0afc2dc95cef",
                             TwoFactorEnabled = false,
                             UserName = "guest",
                             FirstName = "Guest",
