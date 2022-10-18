@@ -14,6 +14,8 @@
             /// </summary>
             public const int LNameMax = 15;
 
+            public const int MaxUsername = 50;
+
             /// <summary>
             /// Error message for the first name. It will appear when you put name bigger than {0} symbols
             /// </summary>
