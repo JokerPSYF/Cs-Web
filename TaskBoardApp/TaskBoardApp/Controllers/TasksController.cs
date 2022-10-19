@@ -13,11 +13,7 @@ namespace TaskBoardApp.Controllers
 
         public TasksController(TaskBoardAppDbContext context) => data = context;
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
+        [HttpGet]
         public IActionResult Create()
         {
             TaskFormModel taskModel = new TaskFormModel()
@@ -56,6 +52,7 @@ namespace TaskBoardApp.Controllers
             return RedirectToAction("All", "Boards");
         }
 
+        [HttpGet]
         public IActionResult Details(int id)
         {
             var task = this.data
@@ -78,6 +75,101 @@ namespace TaskBoardApp.Controllers
             }
 
             return View(task);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Data.Entities.Task task = data.Tasks.Find(id);
+
+            if (task == null)
+            {
+                return BadRequest();
+            }
+
+            string currentUserId = GetUserId();
+            if (currentUserId != task.OwnerId)
+            {
+                return Unauthorized();
+            }
+
+            TaskFormModel taskModel = new TaskFormModel()
+            {
+                Title = task.Title,
+                Description = task.Description,
+                BoardId = task.BoardId,
+                Boards = GetBoards()
+            };
+
+            return View(taskModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, TaskFormModel taskModel)
+        {
+            Data.Entities.Task? task = data.Tasks.Find(id);
+            if (task == null)
+            {
+                return BadRequest();
+            }
+
+            string currentUserId = GetUserId();
+            if (!GetBoards().Any(b => b.Id == taskModel.BoardId))
+            {
+                this.ModelState.AddModelError(nameof(taskModel.BoardId), "Board does not exist.");
+            }
+
+            task.Title = taskModel.Title;
+            task.Description = task.Description;
+            task.BoardId = taskModel.BoardId;
+
+            await this.data.SaveChangesAsync();
+            return RedirectToAction("All", "Boards");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            Data.Entities.Task? task = data.Tasks.Find(id);
+            if (task == null)
+            {
+                return BadRequest();
+            }
+
+            string currentUserId = GetUserId();
+            if (currentUserId != task.OwnerId)
+            {
+                return Unauthorized();
+            }
+
+            TaskViewModel taskModel = new TaskViewModel()
+            {
+                Id = task.Id,
+                Title = task.Title,
+                Description = task.Description
+            };
+
+            return View(taskModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(TaskViewModel taskModel)
+        {
+            Data.Entities.Task? task = data.Tasks.Find(taskModel.Id);
+            if (task == null)
+            {
+                return BadRequest();
+            }
+
+            string currentUserId = GetUserId();
+            if (currentUserId != task.OwnerId)
+            {
+                return Unauthorized();
+            }
+
+            this.data.Remove(task);
+            await this.data.SaveChangesAsync();
+            return RedirectToAction("All", "Boards");
         }
 
         private string GetUserId()
