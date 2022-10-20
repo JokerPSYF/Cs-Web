@@ -12,6 +12,7 @@ namespace Watchlist.Models
 
         [Required]
         [StringLength(MaxEmail, MinimumLength = MinEmail, ErrorMessage = ErrorMessage)]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; } = null!;
 
         [Required]
@@ -22,7 +23,7 @@ namespace Watchlist.Models
         [Required]
         [StringLength(MaxPassword, MinimumLength = MinPassword, ErrorMessage = ErrorMessage)]
         [DataType(DataType.Password)]
-        [Compare("Passord", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; } = null!;
     }
 }

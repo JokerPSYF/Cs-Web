@@ -9,13 +9,13 @@ using Watchlist.Models;
 namespace Watchlist.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class UserController : Controller
     {
         private readonly WatchlistDbContext data;
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
 
-        public AccountController(
+        public UserController(
             WatchlistDbContext context,
             UserManager<User> _userManager,
             SignInManager<User> _signInManager) 
@@ -53,9 +53,7 @@ namespace Watchlist.Controllers
 
             if (result.Succeeded)
             {
-                await signInManager.SignInAsync(user, isPersistent: false);
-
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "User");
             }
 
             foreach (var error in result.Errors)
@@ -92,12 +90,19 @@ namespace Watchlist.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("All", "Movies");
                 }
             }
             ModelState.AddModelError("", "Invalid Login");
 
             return View(model);
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

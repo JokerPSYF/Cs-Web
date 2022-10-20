@@ -1,13 +1,14 @@
-﻿@{
+﻿@using Watchlist.Models.Movies
+@model IEnumerable<MovieViewModel>
+@{
     ViewBag.Title = "All Movies";
 }
-
 
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
-@*<div class="text-center row">
-    @foreach (var movie in Model)
+<div class="text-center row">
+   @foreach (var movie in Model)
     {
         <div class="card col-4" style="width: 20rem;">
             <img class="card-img-top" style="width: 18rem;"
@@ -26,4 +27,3 @@
         </div>
     }
 </div>
-*@
